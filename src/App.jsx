@@ -6,6 +6,19 @@ import "./App.css";
 
 const App = () => {
   const [items, setItems] = useState(groceryItems);
+  const getLocalStorage = () => {
+  let list = localStorage.getItem("grocery-list");
+  if (list) {
+    return JSON.parse(list);
+  }
+  return [];
+};
+
+const setLocalStorage = (items) => {
+  localStorage.setItem("grocery-list", JSON.stringify(items));
+};
+
+const initialList = getLocalStorage(initialList);
    const [editId, setEditId] = useState(null);
   const inputRef = useRef(null);
 const updateItemName = (newName) => {
@@ -15,13 +28,25 @@ const updateItemName = (newName) => {
       }
       return item;
     });
+
+
     setItems(newItems);
     setEditId(null);
+    setLocalStorage(newItems);
     toast.success("item updated");
   };
 
+  const editCompleted = (itemId) => {
+    // ...
+    setLocalStorage(newItems);
+  };
+
+ 
+
+  
 
   const removeItem = (itemId) => {
+     setLocalStorage(newItems);
     const newItems = items.filter((item) => item.id !== itemId);
     setItems(newItems);
     toast.success("item deleted");
@@ -36,6 +61,7 @@ const updateItemName = (newName) => {
     };
     const newItems = [...items, newItem];
     setItems(newItems);
+    setLocalStorage(newItems);
     toast.success("grocery item added");
   };
 
