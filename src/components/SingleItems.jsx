@@ -4,7 +4,7 @@ import "./SingleItem.css";
 const SingleItem = ({ item, editCompleted, removeItem }) => {
   return (
     <div className="single-item">
-      // ....
+     
       <button
         className="btn icon-btn remove-btn"
         type="button"
