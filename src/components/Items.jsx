@@ -1,7 +1,7 @@
 import SingleItem from "./SingleItem";
 import "./Items.css";
 
-const Items = ({ items, editCompleted, removeItem, setEditId }) => {
+const Items = ({ items, removeItem, setEditId }) => {
   return (
     <div className="items">
       {items.map((item) => {
@@ -9,7 +9,6 @@ const Items = ({ items, editCompleted, removeItem, setEditId }) => {
           <SingleItem
             key={item.id}
             item={item}
-            editCompleted={editCompleted}
             removeItem={removeItem}
             setEditId={setEditId}
           />
